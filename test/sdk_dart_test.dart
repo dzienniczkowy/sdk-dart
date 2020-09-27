@@ -1,16 +1,17 @@
-import 'package:sdk_dart/sdk_dart.dart';
+import 'package:sdk_dart/src/login/login_helper.dart';
 import 'package:test/test.dart';
 
 void main() {
-  group('A group of tests', () {
-    Awesome awesome;
+  group('Standard login', () {
+    LoginHelper loginHelper;
 
     setUp(() {
-      awesome = Awesome();
+      loginHelper = LoginHelper('https', 'fakelog.cf', 'powiatwulkanowy');
     });
 
-    test('First Test', () {
-      expect(awesome.isAwesome, isTrue);
+    test('should successfully login', () async {
+      final login = await loginHelper.login('jan@fakelog.cf', 'jan123');
+      expect(login.length, 3);
     });
   });
 }
